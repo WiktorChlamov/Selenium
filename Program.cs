@@ -6,28 +6,36 @@ namespace Selenium
 {
     internal class Program
     {
-        //ввод отдела из нескольких слов строго через "_", так же вводятся несколько языков.
+        //Запуск с параметрами: ввод отдела из нескольких слов строго через "_", так же вводятся несколько языков.
 
 
         static void Main(string[] args)
         {
-            if (!InputValidating(args, out Exception ex))
+            Testing testing = new Testing();
+            if (args.Length == 0)
             {
-                Console.WriteLine(ex.Message);
+                testing.Run(5, "Разработка продуктов", "Английский");
             }
             else
             {
-                int expectedResult = int.Parse(args[0]);
-                string department = args[1];
-                string languages = args[2];
+                if (!InputValidating(args, out Exception ex))
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                else
+                {
+                    int expectedResult = int.Parse(args[0]);
+                    string department = args[1];
+                    string languages = args[2];
 
 
-                string departmentTextOptimazed = TextAdaptation(department);
-                string[] langsTextOptimazed = LanguageArraySetting(languages);
+                    string departmentTextOptimazed = TextAdaptation(department);
+                    string[] langsTextOptimazed = LanguageArraySetting(languages);
 
 
-                Testing testing = new Testing();
-                testing.Run(expectedResult, departmentTextOptimazed, langsTextOptimazed);
+
+                    testing.Run(expectedResult, departmentTextOptimazed, langsTextOptimazed);
+                }
             }
             Console.ReadLine();
         }

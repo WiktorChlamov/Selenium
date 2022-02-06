@@ -1,8 +1,7 @@
 {
   "profiles": {
     "Selenium": {
-      "commandName": "Project",
-      "commandLineArgs": "11 Тех._а АнглиЙский_trt_He_Русский"
+      "commandName": "Project"
     }
   }
 }
